@@ -7,52 +7,6 @@ using namespace std;
 
 vector<string> cand;
 
-void dfs(string &s, string result, int index)
-{
-	if(index == s.size())
-	{
-		cand.push_back(result);
-		cout << result << endl;
-		return;
-	}
-	if(s[index] == '?')
-	{
-		string a,b,c;
-		a = b = c = result;
-		a.push_back('A');
-		b.push_back('B');
-		c.push_back('C');
-		dfs(s, a, index + 1);
-		dfs(s, b, index + 1);
-		dfs(s, c, index + 1);
-	}else{
-		result.push_back(s[index]);
-		dfs(s, result, index + 1);
-	}
-	return;
-}
-
-void test(string &s)
-{
-	dfs(s, "", 0);
-	int count = 0;
-	for(auto e : cand)
-	{
-	    for(int i = 0; i < s.size(); i++)
-        {
-            for (int j = i + 1; j < s.size(); ++j) {
-                for (int k = j + 1; k < s.size(); ++k) {
-                    if(e[i] == 'A' && e[j] == 'B' && e[k] == 'C')
-                    {
-                        count++;
-                    }
-                }
-            }
-        }
-	}
-	cout << count << endl;
-}
-
 int main()
 {
 	typedef long long int ll;
@@ -85,3 +39,4 @@ int main()
     cout << dp[0][0] << endl;
 	return 0;
 }
+
